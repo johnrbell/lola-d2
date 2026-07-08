@@ -65,8 +65,7 @@
 | **900701** | **unknown_limbo**                  | **dash*** |
 | **900801** | **cancelled_but_wms_shipped**      | **ALERT** |
 
-
-*** the stale Landis PA poll behind #900701 raises its own immediate Engineering alert**
+\* the stale Landis PA poll behind #900701 raises its own immediate Engineering alert
 
 **Communication to Non-technical Stakeholders:**
 
