@@ -28,7 +28,7 @@
 
 - **console.log** — one-line-per-order summary table plus cluster incidents.
 - **output/classifications.json** — full structured report (per-order state, reason, stale/inconsistent system, owner, next action, alert routing, notes, plus cluster incidents and assumptions). This is the shape a dashboard or alerter would consume.
-- **output/[triage-report.md](http://triage-report.md)** — the same content written in plain English for non-technical owners, grouped into: system-level incidents, alert-immediately orders, dashboard-only exceptions, and healthy orders.
+- **output/triage-report.md** — the same content written in plain English for non-technical owners, grouped into: system-level incidents, alert-immediately orders, dashboard-only exceptions, and healthy orders.
 
   
 
@@ -82,7 +82,7 @@
 
 **Communication to Non-technical Stakeholders:**
 
-- Please see **output/[triage-report.md](http://triage-report.md)** for the full plain-English writeup per order. It is 100% programmatic — deterministic string templating in **src/classify.ts**. *There is no LLM, no API call, nothing probabilistic anywhere in the pipeline.*  
+- Please see **output/triage-report.md** for the full plain-English writeup per order. It is 100% programmatic — deterministic string templating in **src/classify.ts**. *There is no LLM, no API call, nothing probabilistic anywhere in the pipeline.*  
 
 - **The classifier writes the sentences**. Each rule method builds its own **reason**, **nextAction**, etc. as plain template strings, interpolating values pulled from the fixture. For example, the **wms_shipped_shopify_unfulfilled** reason isn't generated — it's this literal template with the computed lag and SLA dropped in:
 
