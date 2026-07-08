@@ -27,6 +27,8 @@
 **Outputs:**
 
 - **console.log** — one-line-per-order summary table plus cluster incidents.
+![terminaloutput](terminaloutput.png)
+-
 - **output/classifications.json** — full structured report (per-order state, reason, stale/inconsistent system, owner, next action, alert routing, notes, plus cluster incidents and assumptions). This is the shape a dashboard or alerter would consume.
 - **output/triage-report.md** — the same content written in plain English for non-technical owners, grouped into: system-level incidents, alert-immediately orders, dashboard-only exceptions, and healthy orders.
 
