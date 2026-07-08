@@ -74,7 +74,7 @@
  **Reason**:  
  *WMS shipped this order **${humanDuration(lag)}** ago but Shopify still shows it unfulfilled  +*  
 **SLA: ${sla}m)**. The customer has no tracking email and support/reporting see a stuck order.
- So "1h 10m ago" is **humanDuration(minutesBetween([shipped.at](http://shipped.at), [this.now](http://this.now)))** doing arithmetic on the timestamps 
+ So "1h 10m ago" is **humanDuration(minutesBetween(shipped.at, this.now))** doing arithmetic on the timestamps 
 - **Why I built it this way (it's a deliberate choice, not a limitation)**
   - **Reproducible** — same fixture in, byte-identical report out, every time. You can diff two runs and trust the difference is real data change, not model drift.
   - **Auditable** — every sentence traces to a specific line in a specific rule. When an owner asks "why did this say alert immediately?", the answer is a code path, not "the model felt strongly."
