@@ -1,0 +1,231 @@
+{
+  "generatedAt": "2026-05-01T12:00:00Z",
+  "summary": {
+    "healthy": 1,
+    "healthy_in_progress": 1,
+    "missing_fulfillment_order": 1,
+    "wms_silent": 3,
+    "wms_shipped_shopify_unfulfilled": 1,
+    "held_expected": 1,
+    "scheduled_expected": 1,
+    "presale_expected": 1,
+    "presale_unexpected": 1,
+    "backordered_expected": 1,
+    "unknown_limbo": 1,
+    "cancelled_but_wms_shipped": 1
+  },
+  "clusters": [
+    {
+      "key": "wms-intake-failure:Jillamy Fulfillment - Texas",
+      "description": "3 orders routed to Jillamy Fulfillment - Texas have all gone unacknowledged past SLA. This is a warehouse-level intake failure (likely the order feed into their WMS), not 3 separate order problems.",
+      "orderNumbers": [
+        "900201",
+        "900202",
+        "900203"
+      ],
+      "owner": "Fulfillment partner",
+      "alert": "alert_immediately",
+      "nextAction": "Raise ONE incident with Jillamy Fulfillment - Texas: confirm their order-import job is running and ask them to verify these order numbers are in their queue. Engineering should simultaneously confirm the fulfillment-order handoff for this warehouse succeeded on our side."
+    },
+    {
+      "key": "stale-poll:Landis Logistics - Pennsylvania",
+      "description": "Lola One's Veracore order-status poll for Landis Logistics - Pennsylvania is stale (last success 2026-05-01T10:05:00Z). We currently have NO visibility into order progress at this warehouse; 1 order(s) are already in unknown limbo behind this blind spot.",
+      "orderNumbers": [
+        "900701"
+      ],
+      "owner": "Engineering",
+      "alert": "alert_immediately",
+      "nextAction": "Restore the poll (check Veracore API token expiry and poller logs). Until fixed, treat all \"waiting on Landis Logistics - Pennsylvania\" orders as unverified rather than silent."
+    }
+  ],
+  "classifications": [
+    {
+      "orderNumber": "900101",
+      "notes": [],
+      "state": "healthy",
+      "flagged": false,
+      "reason": "Order completed the full path: paid → fulfillment order → WMS shipped → Shopify fulfilled.",
+      "staleOrInconsistentSystem": null,
+      "owner": "None",
+      "nextAction": "None.",
+      "alert": "none"
+    },
+    {
+      "orderNumber": "900102",
+      "notes": [],
+      "state": "healthy_in_progress",
+      "flagged": false,
+      "reason": "Order is moving through the normal path and all SLA clocks are within bounds.",
+      "staleOrInconsistentSystem": null,
+      "owner": "None",
+      "nextAction": "None.",
+      "alert": "none"
+    },
+    {
+      "orderNumber": "900103",
+      "notes": [
+        "Shopify webhooks and the ingestion queue report healthy, so this is not a Lola One data gap."
+      ],
+      "state": "missing_fulfillment_order",
+      "flagged": true,
+      "reason": "Order was paid 1h 20m ago but Shopify never created a fulfillment order (SLA: 30m). No warehouse can see this order — it is invisible to fulfillment entirely.",
+      "staleOrInconsistentSystem": "Shopify (fulfillment order creation) — order exists, routing never happened",
+      "owner": "Shopify/admin configuration",
+      "nextAction": "Check the order in Shopify admin for why routing failed (SKU missing from all location inventories, app hold at creation, or location routing rules). If the SKU/location setup is fine, escalate to Engineering to check for a dropped webhook or app error. Manually create/route the fulfillment order to unblock.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900201",
+      "notes": [
+        "Tags: PeakSale.",
+        "Part of cluster incident \"Jillamy Fulfillment - Texas intake failure\" — alert once for the group, not per order."
+      ],
+      "state": "wms_silent",
+      "flagged": true,
+      "reason": "Fulfillment order was routed to Jillamy Fulfillment - Texas 3h 45m ago and the WMS has never acknowledged it (SLA: 60m). Our poll for this warehouse is healthy, so the silence is real — the order genuinely has not started at the warehouse.",
+      "staleOrInconsistentSystem": "Veracore/WMS (Jillamy Fulfillment - Texas) — no acknowledgement since fulfillment order creation",
+      "owner": "Fulfillment partner",
+      "nextAction": "Confirm with Jillamy Fulfillment - Texas that the order is in their queue; verify the order export/handoff for this warehouse is running; if multiple orders are affected (see cluster incidents) treat it as a warehouse-level intake failure, not an order problem.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900202",
+      "notes": [
+        "Tags: PeakSale.",
+        "Part of cluster incident \"Jillamy Fulfillment - Texas intake failure\" — alert once for the group, not per order."
+      ],
+      "state": "wms_silent",
+      "flagged": true,
+      "reason": "Fulfillment order was routed to Jillamy Fulfillment - Texas 3h 36m ago and the WMS has never acknowledged it (SLA: 60m). Our poll for this warehouse is healthy, so the silence is real — the order genuinely has not started at the warehouse.",
+      "staleOrInconsistentSystem": "Veracore/WMS (Jillamy Fulfillment - Texas) — no acknowledgement since fulfillment order creation",
+      "owner": "Fulfillment partner",
+      "nextAction": "Confirm with Jillamy Fulfillment - Texas that the order is in their queue; verify the order export/handoff for this warehouse is running; if multiple orders are affected (see cluster incidents) treat it as a warehouse-level intake failure, not an order problem.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900203",
+      "notes": [
+        "Tags: PeakSale.",
+        "Part of cluster incident \"Jillamy Fulfillment - Texas intake failure\" — alert once for the group, not per order."
+      ],
+      "state": "wms_silent",
+      "flagged": true,
+      "reason": "Fulfillment order was routed to Jillamy Fulfillment - Texas 3h 33m ago and the WMS has never acknowledged it (SLA: 60m). Our poll for this warehouse is healthy, so the silence is real — the order genuinely has not started at the warehouse.",
+      "staleOrInconsistentSystem": "Veracore/WMS (Jillamy Fulfillment - Texas) — no acknowledgement since fulfillment order creation",
+      "owner": "Fulfillment partner",
+      "nextAction": "Confirm with Jillamy Fulfillment - Texas that the order is in their queue; verify the order export/handoff for this warehouse is running; if multiple orders are affected (see cluster incidents) treat it as a warehouse-level intake failure, not an order problem.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900301",
+      "notes": [
+        "Customer-facing impact: no shipping confirmation despite package being on its way."
+      ],
+      "state": "wms_shipped_shopify_unfulfilled",
+      "flagged": true,
+      "reason": "WMS shipped this order 1h 10m ago but Shopify still shows it unfulfilled (SLA: 30m). The customer has no tracking email and support/reporting see a stuck order.",
+      "staleOrInconsistentSystem": "Shopify (stale — fulfillment not created despite WMS shipment; fulfillment order is marked fulfilled yet no fulfillment record exists, an internal Shopify inconsistency)",
+      "owner": "Engineering",
+      "nextAction": "The fulfillment-sync job reports healthy overall, so treat this as an order-level sync failure: check sync logs for this order number, replay/create the fulfillment in Shopify with the WMS tracking data, and confirm the customer receives the shipping notification.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900401",
+      "notes": [
+        "Hold age 4h 18m; risk level: high; value $488.00."
+      ],
+      "state": "held_expected",
+      "flagged": true,
+      "reason": "Fulfillment is intentionally held: HIGH_RISK_OF_FRAUD (placed by Shopify Flow 4h 18m ago). \"Manual review required before release.\"",
+      "staleOrInconsistentSystem": null,
+      "owner": "Ops",
+      "nextAction": "Work the review queue: complete the manual fraud review and release or cancel the hold. Escalate if any hold ages past 24h — held inventory is unsellable limbo.",
+      "alert": "dashboard_only"
+    },
+    {
+      "orderNumber": "900402",
+      "notes": [],
+      "state": "scheduled_expected",
+      "flagged": false,
+      "reason": "Fulfillment is deliberately scheduled for 2026-05-03T15:00:00Z (2d 3h from now), consistent with the DelayedShip tag. Waiting is the expected state.",
+      "staleOrInconsistentSystem": null,
+      "owner": "None",
+      "nextAction": "None — re-evaluate against SLAs after the scheduled time passes.",
+      "alert": "none"
+    },
+    {
+      "orderNumber": "900501",
+      "notes": [],
+      "state": "presale_expected",
+      "flagged": false,
+      "reason": "Presale order (Preorder - May 15 Ship Window); release date 2026-05-15T14:00:00Z is 14d 2h away. Waiting is the expected state.",
+      "staleOrInconsistentSystem": null,
+      "owner": "None",
+      "nextAction": "None — will be re-evaluated after the release date.",
+      "alert": "none"
+    },
+    {
+      "orderNumber": "900502",
+      "notes": [
+        "Corroborated by the existing `Presale_Alert` tag from Shopify automation."
+      ],
+      "state": "presale_unexpected",
+      "flagged": true,
+      "reason": "Presale ship window (Preorder - Apr 29 Ship Window) plus the 24h grace period expired 22h 0m ago and nothing has shipped. The customer promise date has been missed. The warehouse (Elevate Fulfillment - Idaho) has never acknowledged the fulfillment order.",
+      "staleOrInconsistentSystem": "Veracore/WMS (Elevate Fulfillment - Idaho) — silent since fulfillment order creation",
+      "owner": "Fulfillment partner",
+      "nextAction": "Ask Elevate Fulfillment - Idaho why the released presale order has not been picked up; verify the fulfillment order actually reached their queue after release; Ops should prepare a customer delay comms if not shipping today.",
+      "alert": "alert_immediately"
+    },
+    {
+      "orderNumber": "900601",
+      "notes": [
+        "Track backorder age; escalate to the fulfillment partner if it exceeds 48h without an ETA."
+      ],
+      "state": "backordered_expected",
+      "flagged": true,
+      "reason": "Warehouse acknowledged the order but reported it BACKORDERED 26h 0m ago — blocked for an expected, known reason (no stock at Elevate Fulfillment - Idaho).",
+      "staleOrInconsistentSystem": null,
+      "owner": "Ops",
+      "nextAction": "Confirm restock ETA with the fulfillment partner; if stock exists at another warehouse, consider moving the fulfillment order; notify the customer if the delay exceeds the shipping promise.",
+      "alert": "dashboard_only"
+    },
+    {
+      "orderNumber": "900701",
+      "notes": [
+        "The stale poll itself is raised as an immediate system-level incident (see cluster incidents); this order rides on it."
+      ],
+      "state": "unknown_limbo",
+      "flagged": true,
+      "reason": "No WMS acknowledgement for 2h 10m (SLA: 60m) — but Lola One's order-status poll for Landis Logistics - Pennsylvania has itself been stale for 1h 55m. We are blind, not necessarily blocked: the warehouse may be working this order and we cannot see it.",
+      "staleOrInconsistentSystem": "Lola One's Veracore poll for Landis Logistics - Pennsylvania (monitoring blind spot) — WMS status unknown",
+      "owner": "Engineering",
+      "nextAction": "Fix or rerun the Landis Logistics - Pennsylvania order-status poll first (token expiry / poller error are the usual causes); once data flows, this order will auto-reclassify. Do NOT page the fulfillment partner yet — there is no evidence they are behind. If the poll cannot be restored quickly, have Ops confirm order status directly in the Veracore portal.",
+      "alert": "dashboard_only"
+    },
+    {
+      "orderNumber": "900801",
+      "notes": [
+        "Order value at risk: $196.00."
+      ],
+      "state": "cancelled_but_wms_shipped",
+      "flagged": true,
+      "reason": "Order was cancelled and refunded in Shopify at 2026-05-01T08:40:00Z, the warehouse accepted the cancellation, but the WMS still reported it SHIPPED at 2026-05-01T09:10:00Z — 30m after the cancel. A refunded customer is likely receiving product.",
+      "staleOrInconsistentSystem": "Veracore/WMS (shipped after cancellation was accepted) — Shopify and WMS disagree about this order",
+      "owner": "Ops",
+      "nextAction": "Contact the fulfillment partner (Jillamy Fulfillment - Texas) to intercept/recall the shipment or confirm it did not physically leave; check why the pick was not pulled after cancellation_accepted; if unrecoverable, decide on re-invoice vs write-off.",
+      "alert": "alert_immediately"
+    }
+  ],
+  "assumptions": [
+    "`generatedAt` is treated as \"now\"; all ages/SLAs are measured against it.",
+    "An order is considered acknowledged by the WMS once ANY veracore-sourced lifecycle event exists (including `backordered` — the warehouse has seen the order even if it cannot ship it).",
+    "`orders.createdAt` is used as the \"paid\" timestamp for the paid→fulfillment-order SLA; in this fixture the `paid` lifecycle event always matches `createdAt`.",
+    "A warehouse whose Veracore order poll is `stale` cannot prove or disprove WMS silence: orders waiting on it are classified `unknown_limbo` (monitoring blind spot), not `wms_silent`, and the stale poll itself is raised as the incident. This avoids paging the fulfillment partner for what may be our own data pipeline.",
+    "Two or more `wms_silent` orders at the same warehouse are folded into ONE cluster incident (one page, not N), since the shared warehouse is the likely root cause.",
+    "Expected exceptions (holds, backorders, future-scheduled, presale before release+grace) are dashboard-only: visible, aging tracked, but nobody is paged.",
+    "Presale orders breach only after `presaleReleaseAt` + `presaleShipGraceHours` with no shipment. Before that they are `presale_expected` even with no WMS activity.",
+    "A cancelled/refunded order with WMS activity AFTER the cancellation was accepted is the most severe single-order state here (customer refunded but goods shipped), and always alerts immediately.",
+    "`systemHealth.shopifyFulfillmentSync = healthy` means a WMS-shipped-but-Shopify-unfulfilled order is an order-level sync failure (Engineering), not a global outage."
+  ]
+}

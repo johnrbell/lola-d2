@@ -1,0 +1,611 @@
+{
+  "fixtureVersion": "1.0",
+  "generatedAt": "2026-05-01T12:00:00Z",
+  "slas": {
+    "shopifyPaidToFulfillmentOrderMinutes": 30,
+    "fulfillmentOrderToWmsAcknowledgeMinutes": 60,
+    "wmsShippedToShopifyFulfilledMinutes": 30,
+    "presaleShipGraceHours": 24
+  },
+  "locations": [
+    {
+      "name": "Elevate Fulfillment - Idaho",
+      "type": "warehouse",
+      "shopifyLocationId": "106056483188",
+      "veracoreSystemId": "LOLAID",
+      "veracoreWarehouseId": "ELVIDH"
+    },
+    {
+      "name": "Jillamy Fulfillment - Texas",
+      "type": "warehouse",
+      "shopifyLocationId": "106056450420",
+      "veracoreSystemId": "LOLATX",
+      "veracoreWarehouseId": "ELEVTX"
+    },
+    {
+      "name": "Landis Logistics - Pennsylvania",
+      "type": "warehouse",
+      "shopifyLocationId": "106056417652",
+      "veracoreSystemId": "LOLAPA",
+      "veracoreWarehouseId": "LLWHSE"
+    },
+    {
+      "name": "GoodDay pre-sales",
+      "type": "warehouse",
+      "shopifyLocationId": null,
+      "veracoreSystemId": "GOODDAY",
+      "veracoreWarehouseId": null
+    }
+  ],
+  "systemHealth": {
+    "shopifyWebhooks": {
+      "status": "healthy",
+      "lastReceivedAt": "2026-05-01T11:59:30Z"
+    },
+    "webhookQueue": {
+      "status": "healthy",
+      "waiting": 12,
+      "active": 2,
+      "failed": 0
+    },
+    "shopifyFulfillmentSync": {
+      "status": "healthy",
+      "lastSuccessfulAt": "2026-05-01T11:58:00Z"
+    },
+    "veracoreOrderPollsByWarehouse": [
+      {
+        "warehouse": "Elevate Fulfillment - Idaho",
+        "status": "healthy",
+        "lastSuccessfulAt": "2026-05-01T11:55:00Z"
+      },
+      {
+        "warehouse": "Jillamy Fulfillment - Texas",
+        "status": "healthy",
+        "lastSuccessfulAt": "2026-05-01T11:45:00Z"
+      },
+      {
+        "warehouse": "Landis Logistics - Pennsylvania",
+        "status": "stale",
+        "lastSuccessfulAt": "2026-05-01T10:05:00Z",
+        "notes": "Order-status poll has not completed recently for this warehouse."
+      }
+    ]
+  },
+  "orders": [
+    {
+      "orderNumber": "900101",
+      "name": "#900101",
+      "createdAt": "2026-05-01T07:00:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "fulfilled",
+      "cancelledAt": null,
+      "closedAt": "2026-05-01T08:20:00Z",
+      "tags": [],
+      "riskLevel": null,
+      "totalPrice": "248.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-IVORY-KING",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900101_1",
+          "status": "closed",
+          "requestStatus": "fulfilled",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-05-01T07:03:00Z",
+          "updatedAt": "2026-05-01T08:05:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "ful_900101_1",
+          "status": "success",
+          "createdAt": "2026-05-01T08:10:00Z",
+          "trackingCompany": "UPS",
+          "trackingNumber": "1Z900101"
+        }
+      ],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T07:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T07:03:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-05-01T07:20:00Z", "source": "veracore", "state": "acknowledged" },
+        { "at": "2026-05-01T07:45:00Z", "source": "veracore", "state": "picked" },
+        { "at": "2026-05-01T08:05:00Z", "source": "veracore", "state": "shipped" },
+        { "at": "2026-05-01T08:10:00Z", "source": "shopify", "state": "fulfilled" }
+      ]
+    },
+    {
+      "orderNumber": "900102",
+      "name": "#900102",
+      "createdAt": "2026-05-01T11:35:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": [],
+      "riskLevel": null,
+      "totalPrice": "128.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-ROSE-THROW",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900102_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-05-01T11:38:00Z",
+          "updatedAt": "2026-05-01T11:38:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T11:35:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T11:38:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900103",
+      "name": "#900103",
+      "createdAt": "2026-05-01T10:40:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": [],
+      "riskLevel": null,
+      "totalPrice": "312.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-OATMEAL-QUEEN",
+          "quantity": 2,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T10:40:00Z", "source": "shopify", "state": "paid" }
+      ]
+    },
+    {
+      "orderNumber": "900201",
+      "name": "#900201",
+      "createdAt": "2026-05-01T08:10:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["PeakSale"],
+      "riskLevel": null,
+      "totalPrice": "196.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-SAGE-QUEEN",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900201_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Jillamy Fulfillment - Texas",
+          "createdAt": "2026-05-01T08:15:00Z",
+          "updatedAt": "2026-05-01T08:15:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T08:10:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T08:15:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900202",
+      "name": "#900202",
+      "createdAt": "2026-05-01T08:20:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["PeakSale"],
+      "riskLevel": null,
+      "totalPrice": "196.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-SAGE-QUEEN",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900202_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Jillamy Fulfillment - Texas",
+          "createdAt": "2026-05-01T08:24:00Z",
+          "updatedAt": "2026-05-01T08:24:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T08:20:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T08:24:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900203",
+      "name": "#900203",
+      "createdAt": "2026-05-01T08:22:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["PeakSale"],
+      "riskLevel": null,
+      "totalPrice": "392.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-SAGE-QUEEN",
+          "quantity": 2,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900203_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Jillamy Fulfillment - Texas",
+          "createdAt": "2026-05-01T08:27:00Z",
+          "updatedAt": "2026-05-01T08:27:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T08:22:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T08:27:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900301",
+      "name": "#900301",
+      "createdAt": "2026-05-01T09:15:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": [],
+      "riskLevel": null,
+      "totalPrice": "156.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-CHARCOAL-THROW",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900301_1",
+          "status": "closed",
+          "requestStatus": "fulfilled",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-05-01T09:18:00Z",
+          "updatedAt": "2026-05-01T10:50:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T09:15:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T09:18:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-05-01T10:05:00Z", "source": "veracore", "state": "picked" },
+        { "at": "2026-05-01T10:50:00Z", "source": "veracore", "state": "shipped" }
+      ]
+    },
+    {
+      "orderNumber": "900401",
+      "name": "#900401",
+      "createdAt": "2026-05-01T07:30:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": [],
+      "riskLevel": "high",
+      "totalPrice": "488.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-SNOW-KING",
+          "quantity": 2,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900401_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-05-01T07:35:00Z",
+          "updatedAt": "2026-05-01T07:42:00Z",
+          "scheduledAt": null,
+          "currentHolds": [
+            {
+              "id": "hold_900401_1",
+              "reason": "HIGH_RISK_OF_FRAUD",
+              "reasonNotes": "Manual review required before release.",
+              "heldByApp": "Shopify Flow",
+              "heldByRequestingApp": true,
+              "placedAt": "2026-05-01T07:42:00Z"
+            }
+          ]
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T07:30:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T07:35:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-05-01T07:42:00Z", "source": "shopify", "state": "fulfillment_hold_placed" }
+      ]
+    },
+    {
+      "orderNumber": "900402",
+      "name": "#900402",
+      "createdAt": "2026-05-01T09:00:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["DelayedShip"],
+      "riskLevel": null,
+      "totalPrice": "128.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-BLUSH-THROW",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900402_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-05-01T09:05:00Z",
+          "updatedAt": "2026-05-01T09:08:00Z",
+          "scheduledAt": "2026-05-03T15:00:00Z",
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T09:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T09:05:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-05-01T09:08:00Z", "source": "shopify", "state": "fulfillment_rescheduled" }
+      ]
+    },
+    {
+      "orderNumber": "900501",
+      "name": "#900501",
+      "createdAt": "2026-04-30T16:00:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["PresaleOrder"],
+      "riskLevel": null,
+      "totalPrice": "224.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-LILAC-KING",
+          "quantity": 1,
+          "sellingPlanName": "Preorder - May 15 Ship Window",
+          "presaleReleaseAt": "2026-05-15T14:00:00Z"
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900501_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "GoodDay pre-sales",
+          "createdAt": "2026-04-30T16:05:00Z",
+          "updatedAt": "2026-04-30T16:05:00Z",
+          "scheduledAt": "2026-05-15T14:00:00Z",
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-04-30T16:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-04-30T16:05:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900502",
+      "name": "#900502",
+      "createdAt": "2026-04-20T12:00:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["PresaleOrder", "Presale_Alert"],
+      "riskLevel": null,
+      "totalPrice": "224.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-LILAC-KING",
+          "quantity": 1,
+          "sellingPlanName": "Preorder - Apr 29 Ship Window",
+          "presaleReleaseAt": "2026-04-29T14:00:00Z"
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900502_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-04-29T14:20:00Z",
+          "updatedAt": "2026-04-29T14:20:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-04-20T12:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-04-29T14:20:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900601",
+      "name": "#900601",
+      "createdAt": "2026-04-30T08:00:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": ["WarehouseBackordered"],
+      "riskLevel": null,
+      "totalPrice": "312.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-OATMEAL-QUEEN",
+          "quantity": 2,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900601_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Elevate Fulfillment - Idaho",
+          "createdAt": "2026-04-30T08:05:00Z",
+          "updatedAt": "2026-04-30T10:00:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-04-30T08:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-04-30T08:05:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-04-30T10:00:00Z", "source": "veracore", "state": "backordered" }
+      ]
+    },
+    {
+      "orderNumber": "900701",
+      "name": "#900701",
+      "createdAt": "2026-05-01T09:45:00Z",
+      "financialStatus": "paid",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": null,
+      "closedAt": null,
+      "tags": [],
+      "riskLevel": null,
+      "totalPrice": "128.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-COCOA-THROW",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900701_1",
+          "status": "open",
+          "requestStatus": "submitted",
+          "assignedLocationName": "Landis Logistics - Pennsylvania",
+          "createdAt": "2026-05-01T09:50:00Z",
+          "updatedAt": "2026-05-01T09:50:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T09:45:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T09:50:00Z", "source": "shopify", "state": "fulfillment_order_created" }
+      ]
+    },
+    {
+      "orderNumber": "900801",
+      "name": "#900801",
+      "createdAt": "2026-05-01T08:00:00Z",
+      "financialStatus": "refunded",
+      "fulfillmentStatus": "unfulfilled",
+      "cancelledAt": "2026-05-01T08:40:00Z",
+      "closedAt": null,
+      "tags": ["CustomerCancelled"],
+      "riskLevel": null,
+      "totalPrice": "196.00",
+      "lineItems": [
+        {
+          "sku": "BLANKET-SAND-QUEEN",
+          "quantity": 1,
+          "sellingPlanName": null,
+          "presaleReleaseAt": null
+        }
+      ],
+      "fulfillmentOrders": [
+        {
+          "id": "fo_900801_1",
+          "status": "cancelled",
+          "requestStatus": "cancellation_accepted",
+          "assignedLocationName": "Jillamy Fulfillment - Texas",
+          "createdAt": "2026-05-01T08:05:00Z",
+          "updatedAt": "2026-05-01T08:42:00Z",
+          "scheduledAt": null,
+          "currentHolds": []
+        }
+      ],
+      "fulfillments": [],
+      "lifecycleEvents": [
+        { "at": "2026-05-01T08:00:00Z", "source": "shopify", "state": "paid" },
+        { "at": "2026-05-01T08:05:00Z", "source": "shopify", "state": "fulfillment_order_created" },
+        { "at": "2026-05-01T08:40:00Z", "source": "shopify", "state": "cancelled" },
+        { "at": "2026-05-01T08:42:00Z", "source": "shopify", "state": "fulfillment_order_cancelled" },
+        { "at": "2026-05-01T09:10:00Z", "source": "veracore", "state": "shipped" }
+      ]
+    }
+  ]
+}
